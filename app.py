@@ -133,7 +133,13 @@ def post_aluno():
         contador_ref = db.collection("contador").document("controle_id")
         contador_doc = contador_ref.get()
 
-        ultimo_id = contador_doc.to_dict().get("ultimo_id", 0)
+        # cria contador automaticamente se não existir
+        if not contador_doc.exists:
+            contador_ref.set({"ultimo_id": 0})
+            ultimo_id = 0
+        else:
+            ultimo_id = contador_doc.to_dict().get("ultimo_id", 0)
+
         novo_id = ultimo_id + 1
 
         contador_ref.update({"ultimo_id": novo_id})
@@ -152,7 +158,6 @@ def post_aluno():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 # =========================================
 # PUT - ALTERAÇÃO TOTAL
