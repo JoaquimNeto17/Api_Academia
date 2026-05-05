@@ -1,5 +1,7 @@
 🏋️‍♂️ API Academia (Back-end)
 
+Vercel: https://api-academia-mu.vercel.app/
+
 API desenvolvida para gerenciamento de atletas de academia, permitindo cadastro, autenticação e controle de usuários via CPF.
 
 📌 Sobre o Projeto
